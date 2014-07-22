@@ -5,6 +5,7 @@ from hand import Hand
 from card import Card
 
 class Board:
+    
     def __init__(self, PLAYER_COUNT=1, NUMBER_OF_DECKS=1, MINIMUM_BET=1):
         self._dealer = Dealer()
         self._players = [Player(x) for x in xrange(PLAYER_COUNT)]

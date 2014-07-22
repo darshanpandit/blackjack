@@ -1,7 +1,6 @@
 from player import *
 from horseshoe import Horseshoe
 from movegenerator import MoveGenerator
-from utilities import *
 from hand import Hand
 from card import Card
 

@@ -1,5 +1,5 @@
 .. Black Jack documentation master file, created by
-   sphinx-quickstart on Tue Jul 22 18:08:59 2014.
+   sphinx-quickstart on Tue Jul 22 18:30:00 2014.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 

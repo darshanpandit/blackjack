@@ -14,6 +14,8 @@ Welcome to the blackjack wiki!
 * Docstrings
 
 ## Excited to play?
+Pull the repository and issue the following command from the folder
+
 `python board.py`
 
 or

@@ -20,6 +20,6 @@ Pull the repository and issue the following command from the folder
 
 or
 
-Initialize Board based on your parameters and call play method
+Import Board, initialize the class and call the play method
 
 `Board().play()`

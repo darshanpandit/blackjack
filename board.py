@@ -87,7 +87,11 @@ class Board:
                     while True:
                         dealer_value = dealer_hand.evaluate()
                         if dealer_value in range(1,17):
-                            self._move_generator._hit(self._dealer,dealer_hand)
+                            print "Hitting"
+                            try:
+                                self._move_generator._hit(self._dealer,dealer_hand)
+                            except StopIteration, e:
+                                print ">> Dealer went bust! <<"
                         else:
                             break
 
@@ -242,4 +246,3 @@ if __name__ ==  '__main__':
 
     board = Board(number_of_players)
     board.play()
-    

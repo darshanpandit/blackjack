@@ -3,6 +3,7 @@ from horseshoe import Horseshoe
 from movegenerator import MoveGenerator
 from hand import Hand
 from card import Card
+import sys
 
 class Board:
     def __init__(self, PLAYER_COUNT=1, NUMBER_OF_DECKS=1, MINIMUM_BET=1):
@@ -40,9 +41,9 @@ class Board:
                     dealer_hand = Hand(0)
                     
                     
-                    print '#'*60
+                    #print '#'*60
                     print 'First Card will be served'
-                    print '#'*60
+                    #print '#'*60
                     #Serve them their first card
                     [hand.insert(shoe.draw()) for player,hand in hands]
                     #Serve the dealer the first card
@@ -59,9 +60,9 @@ class Board:
                     print '*'*50
 
                     
-                    print '#'*60
+                    #print '#'*60
                     print 'Next Card will be served'
-                    print '#'*60
+                    #print '#'*60
                     #Serve them their second card
                     [hand.insert(shoe.draw()) for player,hand in hands]
                     dealer_hand.insert(shoe.draw())
@@ -70,7 +71,7 @@ class Board:
                         print 'Player {0} : Your Cards are :'.format(player.id)
                         print hand
 
-                    print '#'*60
+                    #print '#'*60
                     
                     final_hands =[]
                     
@@ -79,7 +80,7 @@ class Board:
                             final_hands.append(ret_hand)
                     
                     #Show Dealer's Hand 
-                    print '#'*60
+                    #print '#'*60
                     print 'Dealer\s Hand'
                     print dealer_hand  
 
@@ -90,7 +91,7 @@ class Board:
                         else:
                             break
 
-                    print '#'*60
+                    #print '#'*60
                     print 'Dealer\'s Final Hand'
                     print dealer_hand     
                     #Print Dealer's state 
@@ -232,6 +233,13 @@ class Board:
         return bet
 
 if __name__ ==  '__main__':
-    board = Board(2)
+    number_of_players = raw_input("How many players?")
+    try:
+        number_of_players = int(number_of_players)
+    except ValueError, e:
+        print "Enter a number not '", number_of_players , "'"
+        sys.exit(1)
+
+    board = Board(number_of_players)
     board.play()
     

@@ -9,6 +9,8 @@ class MoveGenerator:
     
     def _hit(self,player,hand):
         hand.insert(self._shoe.draw())
+        if hand.evaluate()<0:
+            raise StopIteration
    
     def _stand(self,player, hand):
         raise StopIteration
@@ -24,9 +26,9 @@ class MoveGenerator:
         return [hand1, hand2]
     
     def _double(self,player,hand):
-        hand.set_can_double(False)
+        hand.cannot_double()
         hand.add_bet(player.bet(hand.get_bet()))
-        self.hit(player,hand)
+        self._hit(player,hand)
         
     
     def generate_possible_methods(self,player,hand):
@@ -38,8 +40,8 @@ class MoveGenerator:
         else:
             yield ['Hit',self._hit]
             yield ['Stand',self._stand]
-            if player.can_bet(hand.get_bet() and hand.can_double()):
-                yield ['DoubleDown',self._double]
+            if player.can_bet(hand.get_bet()) and hand.can_double():
+                yield ['Double',self._double]
                 
             #We allow splits on 10s
             if len(hand._cards) is 2 and hand.can_split() and hand._cards[0].value() == hand._cards[1].value() and player.can_bet(hand.get_bet()):

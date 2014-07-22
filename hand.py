@@ -40,28 +40,35 @@ class Hand:
         self._bet = 0
         return amount
     
+    def describe(self):
+        hands = ''
+        for card in self._cards:
+            hands = hands +'\t' +card.__str__()+']'
+        eval  = 'Value : {0}\nBet : {1}'.format(str(self.evaluate()),self._bet)
+        seperator ='*'*40
+        return (hands+'\n'+eval+'\n'+seperator)
+    
     def __str__(self):
         hands = ''
         for card in self._cards:
-            hands = hands + card.__str__()+'\n'
-        eval  = 'Value : {0}\nBet : {1}'.format(str(self.evaluate()),self._bet)
-        seperator ='**************************************************'
-        return (hands+'\n'+eval+'\n'+seperator+'\n')
+            hands = hands + '\t'+ card.__str__()+ ']'
+        return hands
     
     def can_split(self):
         return self._split
         
     def can_double(self):
-        return self._split
+        return self._double
     
-    def set_can_double(self):
-        return self._split
+    def cannot_double(self):
+        self._split = False
+        self._double = False
     
     def get_bet(self):
         return self._bet
         
     def add_bet(self, more_bet):
-        self.bet += more_bet
+        self._bet += more_bet
         
     def isBlackjack(self):
         if self._eval is 21 and len(self._cards) is 2:
@@ -76,4 +83,6 @@ class SplitHand(Hand):
         self._eval  = 0
         self._split = False
 
+        # We allow Double-down on splits
+        self._double = True
 

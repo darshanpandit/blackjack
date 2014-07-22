@@ -2,7 +2,7 @@ import random
 from card import Card
 
 class Horseshoe:
-    def __init__(self, NUMBER_OF_DECKS):
+    def __init__(self, NUMBER_OF_DECKS=4):
         self._shoe = [Card(card_value,card_type) for card_value in xrange(1,14) for card_type in xrange(0,4)]*NUMBER_OF_DECKS
         self._ground    = []
         
